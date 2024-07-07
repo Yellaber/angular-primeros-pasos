@@ -1,0 +1,21 @@
+<h3 class="py-3">Heroes List</h3>
+
+<div *ngIf="heroDeleted else nothingDeleted" class="alert alert-success" role="alert">
+  <strong>Heroe: {{ heroDeleted }}</strong> has been deleted.
+</div>
+
+<ng-template #nothingDeleted>
+  <div class="alert alert-danger" role="alert">
+    It wasn't possible delete anything.
+  </div>
+</ng-template>
+
+<button
+  *ngIf="heroNames.length > 0"
+  (click)="removeLastHeroe()"
+  class="btn btn-outline-danger mb-3">Delete last Heroe
+</button>
+
+<ul class="list-group mb-4">
+  <li class="list-group-item" *ngFor="let name of heroNames">{{ name }}</li>
+</ul>
